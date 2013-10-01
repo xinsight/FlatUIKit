@@ -22,6 +22,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.defaultEdgeInsets = self.titleEdgeInsets;
+        _buttonColor = [UIColor colorWithRed:0.2f green:0.2f blue:0.9f alpha:1.0f];
+        _buttonHighlightColor = [UIColor colorWithRed:0.1f green:0.1f blue:0.1f alpha:1.0f];
     }
     return self;
 }
@@ -38,6 +40,11 @@
 
 - (void) setButtonColor:(UIColor *)buttonColor {
     _buttonColor = buttonColor;
+    [self configureFlatButton];
+}
+
+- (void) setButtonHighlightColor:(UIColor *)buttonColor {
+    _buttonHighlightColor = buttonColor;
     [self configureFlatButton];
 }
 
@@ -61,7 +68,7 @@
                                                       cornerRadius:self.cornerRadius
                                                        shadowColor:self.shadowColor
                                                       shadowInsets:UIEdgeInsetsMake(0, 0, self.shadowHeight, 0)];
-    UIImage *highlightedBackgroundImage = [UIImage buttonImageWithColor:self.buttonColor
+    UIImage *highlightedBackgroundImage = [UIImage buttonImageWithColor:self.buttonHighlightColor
                                                            cornerRadius:self.cornerRadius
                                                             shadowColor:[UIColor clearColor]
                                                            shadowInsets:UIEdgeInsetsMake(self.shadowHeight, 0, 0, 0)];
